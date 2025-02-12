@@ -271,8 +271,8 @@ public class Outline : MonoBehaviour {
 
   void UpdateMaterialProperties() {
 
-        // Apply properties according to mode
-        UpdateColor();
+    // Apply properties according to mode
+    outlineFillMaterial.SetColor("_OutlineColor", outlineColor);
 
     switch (outlineMode) {
       case Mode.OutlineAll:
@@ -306,12 +306,4 @@ public class Outline : MonoBehaviour {
         break;
     }
   }
-    void UpdateColor()
-    {
-        outlineFillMaterial.SetColor("_OutlineColor", outlineColor);
-    }
-    public void UpdateColor(Color color)
-    {
-        outlineFillMaterial.SetColor("_OutlineColor", color);
-    }
 }
