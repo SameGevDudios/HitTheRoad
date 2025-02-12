@@ -1,4 +1,4 @@
 public interface IHighlighter
 {
-    void Highlight();
+    void Highlight(bool inRange);
 }
