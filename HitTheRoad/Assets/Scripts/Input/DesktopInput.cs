@@ -8,8 +8,6 @@ public class DesktopInput : IInput
         new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
     public Vector3 GrabPoint() =>
         new Vector3(Screen.width / 2, Screen.height / 2, 0);
-    public bool Jump() =>
-        Input.GetButtonDown("Jump");
     public bool Grab() =>
         Input.GetMouseButtonDown(0);
 }
