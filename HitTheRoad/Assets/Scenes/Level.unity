@@ -261,7 +261,7 @@ MonoBehaviour:
   _armTransform: {fileID: 1157264646}
   _cameraTransform: {fileID: 330585546}
   _grabRadius: 2
-  _throwForce: 1
+  _throwForce: 300
   _grabMask:
     serializedVersion: 2
     m_Bits: 64
