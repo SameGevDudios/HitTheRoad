@@ -11,7 +11,7 @@ public class RangeHighlightController : IHighlightController
         _searchTransform = searchTransform;
         _searchRadius = searchRadius;
     }
-    public void Search()
+    public void SearchForPickups()
     {
         Collider[] col = Physics.OverlapSphere(_searchTransform.position, _searchRadius);
         _pickupFound = col.Length > 0;

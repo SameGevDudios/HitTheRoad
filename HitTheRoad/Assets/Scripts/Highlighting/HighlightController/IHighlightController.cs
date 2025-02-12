@@ -1,5 +1,5 @@
 public interface IHighlightController
 {
-    void Search();
+    void SearchForPickups();
     bool PickupInRange();
 }
