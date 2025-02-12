@@ -2,17 +2,13 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private Transform _cameraTransform;
-    [SerializeField] private float _sensitivity;
-    private float _verticalLookRotation;
+    private Transform _cameraTransform;
+    private float _sensitivity, _verticalLookRotation;
     private IInput _input;
-    private void Start()
+    public void Constructor(Transform cameraTransform, float sensitivity, IInput input)
     {
-        // Temporary call point
-        Constructor(new DesktopInput());
-    }
-    private void Constructor(IInput input)
-    {
+        _cameraTransform = cameraTransform;
+        _sensitivity = sensitivity;
         _input = input;
     }
     private void Update()

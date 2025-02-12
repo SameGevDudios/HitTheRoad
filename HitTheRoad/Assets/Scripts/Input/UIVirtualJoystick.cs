@@ -17,9 +17,7 @@ public class UIVirtualJoystick : MonoBehaviour, IPointerDownHandler, IDragHandle
     public bool invertXOutputValue;
     public bool invertYOutputValue;
 
-    [Header("Output")]
-    public Event joystickOutputEvent;
-
+    private Vector3 _currentInput;
     void Start()
     {
         SetupHandle();
@@ -68,15 +66,18 @@ public class UIVirtualJoystick : MonoBehaviour, IPointerDownHandler, IDragHandle
         }
     }
 
-    private void OutputPointerEventValue(Vector2 pointerPosition)
+    private void OutputPointerEventValue(Vector3 pointerPosition)
     {
-        joystickOutputEvent.Invoke(pointerPosition);
+        _currentInput = pointerPosition;
     }
 
     private void UpdateHandleRectPosition(Vector2 newPosition)
     {
         handleRect.anchoredPosition = newPosition;
     }
+
+    public Vector3 CurrentInput =>
+        _currentInput;
 
     Vector2 ApplySizeDelta(Vector2 position)
     {

@@ -2,40 +2,27 @@ using UnityEngine;
 
 public class GrabController : MonoBehaviour
 {
-    [SerializeField] private Transform _playerTransform, _armTransform, _cameraTransform;
-    [SerializeField] private float _grabRadius, _throwForce;
-    [SerializeField] private LayerMask _grabMask;
+    private GameObject _releaseButton;
     private IInput _input;
     private IGrabValidator _grabValidator;
     private IHighlightController _highlightController;
     private IGrabber _grabber;
 
-    private void Start()
+    public void Constructor(GameObject releaseButton,
+        IInput input, IGrabValidator grabValidator, IHighlightController highlightController, IGrabber grabber)
     {
-        // Temporary call point
-        IInput input = new DesktopInput();
-        IGrabValidator validator = new GrabValidator(input);
-        IHighlightController highlightController = new RangeHighlightController(_playerTransform, _grabRadius, _grabMask);
-        IGrabber grabber = new PickupGrabber(_armTransform, _cameraTransform, _throwForce);
-        Constructor(input, validator, highlightController, grabber);
-    }
-    private void Constructor(IInput input, IGrabValidator grabValidator, IHighlightController highlightController, IGrabber grabber)
-    {
+        _releaseButton = releaseButton;
         _input = input;
         _grabValidator = grabValidator;
         _highlightController = highlightController;
         _grabber = grabber;
     }
+
     private void Update()
     {
-        _highlightController.SearchForPickups();
-        if (_input.Grab())
+        if(_input.Grab() && !_grabValidator.Grabbed())
         {
-            if (_grabValidator.Grabbed())
-            {
-                StopGrab();
-            }
-            else if (_grabValidator.CanGrab(out GameObject pickup) &&
+            if (_grabValidator.CanGrab(out GameObject pickup) &&
                 _highlightController.PickupInRange())
             {
                 StartGrab(pickup);
@@ -46,10 +33,12 @@ public class GrabController : MonoBehaviour
     {
         _grabber.Grab(pickup);
         _grabValidator.Grab();
+        _releaseButton.SetActive(true);
     }
-    private void StopGrab()
+    public void StopGrab()
     {
         _grabber.Release();
         _grabValidator.Release();
+        _releaseButton.SetActive(false);
     }
 }

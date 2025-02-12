@@ -2,22 +2,17 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Rigidbody _rigidbody;
-    [SerializeField] private float _speed;
+    private float _speed;
     private IInput _input;
 
-    private void Start()
-    {
-        // Temporary call point
-        Constructor(new DesktopInput());
-    }
     private void Update()
     {
         Move();
     }
-    public void Constructor(IInput input)
+    public void Constructor(IInput input, float speed)
     {
         _input = input;
+        _speed = speed;
     }
     private void Move()
     {
