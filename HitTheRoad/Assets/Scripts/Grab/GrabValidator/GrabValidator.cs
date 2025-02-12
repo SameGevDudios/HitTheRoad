@@ -26,7 +26,7 @@ public class GrabValidator : IGrabValidator
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
             pickup = hit.collider.gameObject;
-            return hit.collider.CompareTag("Pickup");
+            return hit.collider.CompareTag("Pickup") && pickup != null;
         }
         return false;
     }
