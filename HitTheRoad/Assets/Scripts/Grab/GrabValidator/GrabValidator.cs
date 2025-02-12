@@ -9,11 +9,11 @@ public class GrabValidator : IGrabValidator
     {
         _input = input;
     }
-    public void Grabbed()
+    public void Grab()
     {
         _grabbed = true;
     }
-    public void Released() 
+    public void Release() 
     {
         _grabbed = false;
     }
@@ -30,4 +30,6 @@ public class GrabValidator : IGrabValidator
         }
         return false;
     }
+    public bool Grabbed() =>
+        _grabbed;
 }

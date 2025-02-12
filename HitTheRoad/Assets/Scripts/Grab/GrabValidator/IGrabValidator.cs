@@ -2,7 +2,8 @@ using UnityEngine;
 
 public interface IGrabValidator
 {
-    void Grabbed();
-    void Released();
+    void Grab();
+    void Release();
     bool CanGrab(out GameObject pickup);
+    bool Grabbed();
 }
