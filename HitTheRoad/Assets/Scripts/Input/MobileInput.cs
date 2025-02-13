@@ -9,8 +9,16 @@ public class MobileInput : IInput
     {
         _joystick = joystick;
     }
-    public Vector3 Movement() =>
-         _joystick.CurrentInput;
+    public Vector3 Movement()
+    {
+        Vector3 movement = new Vector3(_joystick.CurrentInput.x,
+            0,
+            _joystick.CurrentInput.y);
+        if(movement.magnitude > 0)
+            movement.Normalize();
+        return movement;
+    }
+
     public Vector2 Look()
     {
         if (Input.touchCount < 1)
