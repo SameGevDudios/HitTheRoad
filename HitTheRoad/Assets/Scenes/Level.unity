@@ -744,7 +744,7 @@ MonoBehaviour:
   _playerMovement: {fileID: 1285771158}
   _speed: 5
   _cameraController: {fileID: 1285771157}
-  _sensitivity: 1
+  _sensitivity: 0.05
 --- !u!4 &410317645
 Transform:
   m_ObjectHideFlags: 0
@@ -2925,6 +2925,7 @@ GameObject:
   - component: {fileID: 1285771159}
   - component: {fileID: 1285771158}
   - component: {fileID: 1285771157}
+  - component: {fileID: 1285771164}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -2939,7 +2940,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1285771156}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf364090afbae2c4f8bfbb057d598456, type: 3}
   m_Name: 
@@ -3072,6 +3073,28 @@ Transform:
   - {fileID: 330585546}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1285771164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285771156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14509e38fcaed544bd2fd8e4f8bb8a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BottomClamp: 90
+  m_TopClamp: 90
+  m_InvertX: 0
+  m_InvertY: 1
+  m_TouchLimit: 10
+  m_Sensitivity: {x: 3, y: 3}
+  m_TouchDetectMode: 0
+  m_CameraTransform: {fileID: 330585546}
+  _player: {fileID: 1285771163}
+  delta: {x: 0, y: 0}
 --- !u!1 &1364712147
 GameObject:
   m_ObjectHideFlags: 0
