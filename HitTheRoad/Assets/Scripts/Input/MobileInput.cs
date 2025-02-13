@@ -23,7 +23,7 @@ public class MobileInput : IInput
     {
         if (Input.touchCount < 1)
             return Vector2.zero;
-        Vector2 delta = _previousTouchPosition - Input.GetTouch(0).position;
+        Vector2 delta = Input.GetTouch(0).position - _previousTouchPosition;
         _previousTouchPosition = Input.GetTouch(0).position;
         return delta;
     }
