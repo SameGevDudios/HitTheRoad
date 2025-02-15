@@ -1,9 +1,9 @@
 using UnityEngine;
+using Zenject;
 
 public class Bootstrapper : MonoBehaviour
 {
-    [Header("Input")]
-    [SerializeField] private UIVirtualJoystick _joystick;
+    [Inject] IInput _input;
 
     [Header("Grab Controller")]
     [SerializeField] private GrabController _grabController;
@@ -22,15 +22,15 @@ public class Bootstrapper : MonoBehaviour
 
     private void Awake()
     {
-        IInput input = new MobileInput(_joystick);
-
-        IGrabValidator validator = new GrabValidator(input);
+        IGrabValidator validator = new GrabValidator(_input);
         IHighlightController highlightController = new RangeHighlightController(_playerTransform, _grabRadius, _grabMask);
         IGrabber grabber = new PickupGrabber(_armTransform, _cameraTransform, _throwForce);
         
         _grabController.Constructor(_releaseButton,
-        input, validator, highlightController, grabber);
-        _playerMovement.Constructor(input, _speed);
-        _cameraController.Constructor(_cameraTransform, _sensitivity, input);
+        _input, validator, highlightController, grabber);
+
+        _playerMovement.Constructor(_input, _speed);
+
+        _cameraController.Constructor(_cameraTransform, _sensitivity, _input);
     }
 }
