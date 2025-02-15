@@ -1,12 +1,8 @@
 using UnityEngine;
 
-public class CursorController : MonoBehaviour
+public class CursorController
 {
-    private void Start()
-    {
-        LockCursor();
-    }
-    private void LockCursor()
+    public static void LockCursor()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
