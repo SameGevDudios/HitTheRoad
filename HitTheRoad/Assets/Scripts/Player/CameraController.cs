@@ -5,11 +5,14 @@ public class CameraController : MonoBehaviour
     private Transform _cameraTransform;
     private float _sensitivity, _verticalLookRotation;
     private IInput _input;
+
     public void Constructor(Transform cameraTransform, float sensitivity, IInput input)
     {
         _cameraTransform = cameraTransform;
         _sensitivity = sensitivity;
         _input = input;
+        if(input is DesktopInput)
+            CursorController.LockCursor();
     }
     private void Update()
     {
