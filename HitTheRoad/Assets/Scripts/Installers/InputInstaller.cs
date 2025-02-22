@@ -8,7 +8,7 @@ public class InputInstaller : MonoInstaller
         switch (Application.platform)
         {
             case RuntimePlatform.WindowsEditor: 
-                Container.Bind<IInput>().To<MobileInput>().AsSingle().NonLazy();
+                Container.Bind<IInput>().To<DesktopInput>().AsSingle().NonLazy();
                 break;
             case RuntimePlatform.Android:
                 Container.Bind<IInput>().To<MobileInput>().AsSingle().NonLazy();
