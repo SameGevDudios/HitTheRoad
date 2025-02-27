@@ -23,8 +23,7 @@ public class GrabController : MonoBehaviour
         _highlightController.SearchForPickups();
         if(_input.Grab() && !_grabValidator.Grabbed())
         {
-            if (_grabValidator.CanGrab(out GameObject pickup) &&
-                _highlightController.PickupInRange())
+            if (_grabValidator.CanGrab(out GameObject pickup))
             {
                 StartGrab(pickup);
             }

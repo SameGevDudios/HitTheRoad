@@ -22,7 +22,7 @@ public class Bootstrapper : MonoBehaviour
 
     private void Awake()
     {
-        IGrabValidator validator = new GrabValidator(_input);
+        IGrabValidator validator = new GrabValidator(_input, _grabRadius);
         IHighlightController highlightController = new RangeHighlightController(_playerTransform, _grabRadius, _grabMask);
         IGrabber grabber = new PickupGrabber(_armTransform, _cameraTransform, _throwForce);
         

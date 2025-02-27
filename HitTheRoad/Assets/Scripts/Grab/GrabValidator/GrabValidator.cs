@@ -3,11 +3,13 @@ using UnityEngine;
 public class GrabValidator : IGrabValidator
 {
     private IInput _input;
+    private float _range;
     private bool _grabbed;
 
-    public GrabValidator(IInput input)
+    public GrabValidator(IInput input, float range)
     {
         _input = input;
+        _range = range;
     }
     public void Grab()
     {
@@ -23,7 +25,7 @@ public class GrabValidator : IGrabValidator
         if (_grabbed)
             return false;
         Ray ray = Camera.main.ScreenPointToRay(_input.GrabPoint());
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (Physics.Raycast(ray, out RaycastHit hit, _range))
         {
             pickup = hit.collider.gameObject;
             return hit.collider.CompareTag("Pickup") && pickup != null;
