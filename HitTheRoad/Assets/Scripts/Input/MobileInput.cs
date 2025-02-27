@@ -18,7 +18,7 @@ public class MobileInput : IInput
         Input.touchCount > 0 ?
             Input.GetTouch(0).position : Vector2.zero;
     public bool Grab() =>
-        _grabbed || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began;
+        _grabbed || Input.touchCount > 0 && Input.GetTouch(Input.touchCount - 1).phase == TouchPhase.Began;
     public void SetGrab(bool grab) =>
         _grabbed = grab;
     public void SetMovement(Vector3 movement) =>
